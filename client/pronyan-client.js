@@ -213,7 +213,7 @@ pronyan = (function() {
 					suggestion.appendChild(document.createTextNode(", "));
 				}
 				var clickable = document.createElement("a");
-				clickable.appendChild(document.createTextNode(pronoun));
+				clickable.appendChild(document.createTextNode(pronoun.toLowerCase()));
 				clickable.href = "#";
 				clickable.style.color = "#000";
 				if (clickable.addEventListener) {
@@ -274,8 +274,10 @@ pronyan = (function() {
 		}
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				var pronouns = eval("("+xmlhttp.responseText+")");
-				resolve(pronouns.pronouns);
+				if(xmlhttp.responseText.length) {
+					var pronouns = eval("("+xmlhttp.responseText+")");
+					resolve(pronouns.pronouns);
+				}
 			}
 		}
 		xmlhttp.open("GET","http://172.22.87.17:8080/getUserPreferences?userId=" + tag.toLowerCase(),true);
