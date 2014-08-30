@@ -84,17 +84,18 @@ pronyan = (function() {
 		var content = String(event.target.value || event.target.innerText);
 		if(content) {
 			var selectionEnd = event.target.selectionEnd || content.length;
-			var wordEx = /[\w@]*\|\w*/;
+			var wordEx = /[\w@]*\|\w*/gmi;
 			var model = content.slice(0, selectionEnd) + "|" + content.slice(selectionEnd);
 			var match = wordEx.exec(model);
 			if(match) {
-				var word = match.toString().split("|").join("");
+				var word = match.toString().split("|").join("").toLowerCase();
 
 				content.split(" ").forEach(function(tag) {
 					if(tag == word) {return false;}
 					if(tag.slice(0,1) != "@") {return false;}
+					tag = tag.trim().toLowerCase();
+
 					if(users.indexOf(tag) == -1) {
-						tag = tag.trim();
 						// Ask server for user:
 						users.push(tag);
 						var position = usersPronouns.push({user: tag, pronouns: {}}) - 1;
@@ -185,7 +186,7 @@ pronyan = (function() {
 				pronouns: types.map(function(type) {
 					return pronouns.pronouns[type];
 				}).filter(function(pronoun) {
-					return pronoun != word;
+					return pronoun && pronoun != word;
 				})
 			};
 		}).filter(function(pronouns) {
