@@ -88,7 +88,7 @@ pronyan = (function() {
 			var model = content.slice(0, selectionEnd) + "|" + content.slice(selectionEnd);
 			var match = wordEx.exec(model);
 			if(match) {
-				var word = match.toString().split("|").join("");
+				var word = match.toString().split("|").join("").toLowerCase();
 
 				content.split(" ").forEach(function(tag) {
 					if(tag == word) {return false;}
