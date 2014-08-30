@@ -190,7 +190,7 @@ pronyan = (function() {
 				pronouns: types.map(function(type) {
 					return (pronouns.pronouns[type] || "").toLowerCase();
 				}).filter(function(pronoun) {
-					return pronoun && pronoun != word;
+					return pronoun.length && pronoun != word;
 				})
 			};
 		}).filter(function(pronouns) {
