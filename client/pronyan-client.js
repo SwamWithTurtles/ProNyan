@@ -188,7 +188,7 @@ pronyan = (function() {
 			return {
 				name: pronouns.user,
 				pronouns: types.map(function(type) {
-					return pronouns.pronouns[type];
+					return pronouns.pronouns[type].toLowerCase();
 				}).filter(function(pronoun) {
 					return pronoun && pronoun != word;
 				})
@@ -213,13 +213,13 @@ pronyan = (function() {
 					suggestion.appendChild(document.createTextNode(", "));
 				}
 				var clickable = document.createElement("a");
-				clickable.appendChild(document.createTextNode(pronoun.toLowerCase()));
+				clickable.appendChild(document.createTextNode(pronoun));
 				clickable.href = "#";
 				clickable.style.color = "#000";
 				if (clickable.addEventListener) {
-					clickable.addEventListener("click", replace.bind(undefined, pronoun.toLowerCase()), false);
+					clickable.addEventListener("click", replace.bind(undefined, pronoun), false);
 				} else {
-					clickable.attachEvent("onclick", replace.bind(undefined, pronoun.toLowerCase()));
+					clickable.attachEvent("onclick", replace.bind(undefined, pronoun));
 				}
 				suggestion.appendChild(clickable);
 			});
