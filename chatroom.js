@@ -45,7 +45,7 @@ if (Meteor.isClient) {
 
             var username = "brian";
 
-            var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + Meteor.user().username +
+            var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + Meteor.user().username.toLowerCase() +
             "&they=" + nom + "&them=" + obl + "&their=" + det + "&themselves=" + refl + "&theirs=" + poss;
 
             $.get(url, {}, function() {
