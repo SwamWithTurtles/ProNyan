@@ -39,12 +39,16 @@ pronyan = (function() {
 	  });
 	});
 
-	if (document.body.addEventListener) {
-	  document.body.addEventListener("keyup", handleKeyUp, false);
-		document.body.addEventListener("click", handleKeyUp, false);
-	} else {
-	  document.body.attachEvent("onkeyup", handleKeyUp);
-		document.body.attachEvent("onclick", handleKeyUp);
+	var old = window.onload;
+	window.onload = function() {
+		if (document.body.addEventListener) {
+		  document.body.addEventListener("keyup", handleKeyUp, false);
+			document.body.addEventListener("click", handleKeyUp, false);
+		} else {
+		  document.body.attachEvent("onkeyup", handleKeyUp);
+			document.body.attachEvent("onclick", handleKeyUp);
+		}
+		if(old) {old();}
 	}
 
 	var buffer = "";
