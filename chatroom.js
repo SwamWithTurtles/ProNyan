@@ -23,8 +23,19 @@ if (Meteor.isClient) {
     }
   });
 
-    Template.config.helpers({
+    Template.chat.events({
         'click input' : function () {
+            // template data, if any, is available in 'this'
+            Messages.insert({
+                user: Meteor.user().username,
+                message: $("#message")[0].value,
+                time: new Date()
+            })
+        }
+    });
+
+    Template.config.events({
+        "click input[type='button']" : function () {
             // template data, if any, is available in 'this'
             var nom = $("#pron-nom")[0].value;
             var obl =  $("#pron-obl")[0].value;
@@ -34,7 +45,7 @@ if (Meteor.isClient) {
 
             var username = "brian";
 
-            var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + username +
+            var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + Meteor.user().username +
             "&they=" + nom + "&them=" + obl + "&their=" + det + "&themselves=" + refl + "&theirs=" + poss;
 
             $.get(url, {}, function() {
