@@ -67,7 +67,7 @@ pronyan = (function() {
 						var startOffset = match.indexOf("|");
 						range.setStart(range.startContainer, range.startOffset - startOffset);
             range.deleteContents();
-            range.insertNode( document.createTextNode(text));
+            range.insertNode(document.createTextNode(text));
         }
     } else if (document.selection && document.selection.createRange) {
         document.selection.createRange().text = text;
@@ -216,10 +216,11 @@ pronyan = (function() {
 				clickable.href = "#";
 				clickable.style.color = "#000";
 				if (clickable.addEventListener) {
-					clickable.addEventListener("click", replace.bind(undefined, pronoun), false);
+					clickable.addEventListener("click", replace.bind(undefined, pronoun.toLowerCase()), false);
 				} else {
-					clickable.attachEvent("onclick", replace.bind(undefined, pronoun));
+					clickable.attachEvent("onclick", replace.bind(undefined, pronoun.toLowerCase()));
 				}
+				hidePronouns();
 				suggestion.appendChild(clickable);
 			});
 			suggestion.style.margin = "2px";
