@@ -23,16 +23,25 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.chat.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      Messages.insert({
-        user: Meteor.user().username,
-        message: $("#message")[0].value,
-        time: new Date()
-      })
-    }
-  });
+    Template.config.helpers({
+        'click input' : function () {
+            // template data, if any, is available in 'this'
+            var nom = $("#pron-nom")[0].value;
+            var obl =  $("#pron-nom")[0].value;
+            var det = $("#pron-nom")[0].value;
+            var poss = $("#pron-nom")[0].value;
+            var refl = $("#pron-nom")[0].value;
+
+            var username = "brian";
+
+            var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + username +
+            "&they=" + nom + "&them=" + obl + "&their=" + det + "&themselves=" + refl + "&theirs=" + poss;
+
+            $.get(url, {}, function() {
+                alert("success");
+            });
+        }
+    });
 }
 
 if (Meteor.isServer) {
