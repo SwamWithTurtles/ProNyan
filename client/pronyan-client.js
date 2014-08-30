@@ -188,7 +188,7 @@ pronyan = (function() {
 			return {
 				name: pronouns.user,
 				pronouns: types.map(function(type) {
-					return pronouns.pronouns[type].toLowerCase();
+					return (pronouns.pronouns[type] || "").toLowerCase();
 				}).filter(function(pronoun) {
 					return pronoun && pronoun != word;
 				})
