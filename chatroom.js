@@ -27,10 +27,10 @@ if (Meteor.isClient) {
         'click input' : function () {
             // template data, if any, is available in 'this'
             var nom = $("#pron-nom")[0].value;
-            var obl =  $("#pron-nom")[0].value;
-            var det = $("#pron-nom")[0].value;
-            var poss = $("#pron-nom")[0].value;
-            var refl = $("#pron-nom")[0].value;
+            var obl =  $("#pron-obl")[0].value;
+            var det = $("#pron-det")[0].value;
+            var poss = $("#pron-poss")[0].value;
+            var refl = $("#pron-refl")[0].value;
 
             var username = "brian";
 
