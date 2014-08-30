@@ -7,7 +7,9 @@ standard-app-packages
 autopublish
 insecure
 preserve-inputs
-accounts-ui
-accounts-password
 bootstrap
 less
+iron:router
+accounts-ui
+accounts-password
+

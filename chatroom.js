@@ -10,6 +10,12 @@ if (Meteor.isClient) {
     return "Welcome to the_chatroom.";
   };
 
+  Router.map(function() {
+      this.route('chat', {
+          path: '/'
+      });
+      this.route('config');
+  });
 
   Template.hello.helpers({
     messages: function() {
