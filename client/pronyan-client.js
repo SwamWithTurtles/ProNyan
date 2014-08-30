@@ -115,6 +115,7 @@ pronyan = (function() {
 				var target = event.target;
 
 				function replace(replacement, event) {
+					hidePronouns();
 					if(target.value) {
 						target.value = target.value.slice(0,match.index) + replacement + target.value.slice(match.index + word.length);
 						target.selectionStart = target.selectionEnd = match.index + replacement.length;
@@ -220,7 +221,6 @@ pronyan = (function() {
 				} else {
 					clickable.attachEvent("onclick", replace.bind(undefined, pronoun.toLowerCase()));
 				}
-				hidePronouns();
 				suggestion.appendChild(clickable);
 			});
 			suggestion.style.margin = "2px";
