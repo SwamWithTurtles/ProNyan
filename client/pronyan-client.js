@@ -81,6 +81,9 @@ pronyan = (function() {
 		if(!event.target) {
 			return;
 		}
+		if(event.target.className.indexOf("pronoun") == -1) {
+			return;
+		}
 		var content = String(event.target.value || event.target.innerText);
 		if(content) {
 			var selectionEnd = event.target.selectionEnd || content.length;
@@ -270,12 +273,8 @@ pronyan = (function() {
 		}
 		xmlhttp.onreadystatechange=function() {
 			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				try {
-					var pronouns = eval("("+xmlhttp.responseText+")");
-					resolve(pronouns.pronouns);
-				} catch(e) {
-					console.warn(xmlhttp.responseText);
-				}
+				var pronouns = eval("("+xmlhttp.responseText+")");
+				resolve(pronouns.pronouns);
 			}
 		}
 		xmlhttp.open("GET","http://172.22.87.17:8080/getUserPreferences?userId=" + tag.toLowerCase(),true);
