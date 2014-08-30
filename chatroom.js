@@ -22,7 +22,7 @@ if (Meteor.isClient) {
         return Messages.find({}, {sort: {time: -1}}).fetch();
     }
   });
-    
+
   Template.chat.events({
     'click input' : function () {
       // template data, if any, is available in 'this'
