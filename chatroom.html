@@ -1,15 +1,17 @@
-<head>
-  <title>ProNyan Chatroom</title>
-</head>
+<template name="layout">
+    <head>
+      <title>ProNyan Chatroom</title>
+    </head>
 
-<body>
-    <div class="alert alert-info">
-        {{> loginButtons}}
-    </div>
-  {{> hello}}
-</body>
+    <body>
+        <div class="alert alert-info">
+            {{> loginButtons}}
+        </div>
+      {{> yield}}
+    </body>
+</template>
 
-<template name="hello">
+<template name="chat">
   <h1>ProNyan</h1>
 
     <table class="table table-hover">

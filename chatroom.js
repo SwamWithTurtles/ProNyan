@@ -4,25 +4,26 @@ if (Meteor.isClient) {
 
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
-  })
-
-  Template.hello.greeting = function () {
-    return "Welcome to the_chatroom.";
-  };
+  });
 
   Router.map(function() {
       this.route('chat', {
-          path: '/'
+          path: '/',
+          layoutTemplate: 'layout'
       });
-      this.route('config');
+      this.route('config', {
+          path: '/config',
+          layoutTemplate: 'layout'
+      });
   });
 
-  Template.hello.helpers({
+  Template.chat.helpers({
     messages: function() {
         return Messages.find({}, {sort: {time: -1}}).fetch();
     }
-  })
-  Template.hello.events({
+  });
+    
+  Template.chat.events({
     'click input' : function () {
       // template data, if any, is available in 'this'
       Messages.insert({
