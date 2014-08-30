@@ -38,6 +38,14 @@
 </template>
 
 <template name="config">
+
+    <select>
+        <option value='{"they": "he", "them": "him", "their": "his", "themselves": "himself", "theirs": "his"}'>Masculine (He/Him/His)</option>
+        <option value='{"they": "she", "them": "her", "their": "her", "themselves": "herself", "theirs": "hers"}'>Feminine (She/Her/Her)</option>
+        <option value='{"they": "they", "them": "them", "their": "their", "themselves": "themselves", "theirs": "theirs"}'>Gender-Neutral (They/Them/Their)</option>
+    </select>
+    <input type="button" id="fill" value="Fill With Defaults">
+
     <table class="table">
         <thead>
         <tr>
@@ -89,5 +97,5 @@
 
     </table>
 
-    <input type="button" value="Change Pronouns">
+    <input type="button" id="change" value="Change Pronouns">
 </template>

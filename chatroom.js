@@ -35,7 +35,7 @@ if (Meteor.isClient) {
     });
 
     Template.config.events({
-        "click input[type='button']" : function () {
+        "click #change" : function () {
             // template data, if any, is available in 'this'
             var nom = $("#pron-nom")[0].value;
             var obl =  $("#pron-obl")[0].value;
@@ -51,7 +51,17 @@ if (Meteor.isClient) {
             $.get(url, {}, function() {
                 alert("success");
             });
+        },
+
+        "click #fill" : function(){
+            var selectedPronouns = $.parseJSON($("select")[0].value);
+            $("#pron-nom").val(selectedPronouns.they);
+            $("#pron-obl").val(selectedPronouns.them);
+            $("#pron-det").val(selectedPronouns.their);
+            $("#pron-poss").val(selectedPronouns.theirs);
+            $("#pron-refl").val(selectedPronouns.themselves);
         }
+
     });
 }
 
