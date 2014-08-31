@@ -5,11 +5,18 @@
 
     <body>
         <div class="alert alert-info nav">
-            Pronyan!
+
             {{> loginButtons}} |
 
             <a href="{{pathFor 'chat'}}">Chat</a> |
             <a href="{{pathFor 'config'}}">User Settings</a>
+
+            <div style="float: right">
+
+                <b style="font-size: 1.4em">Pronyan!</b>
+
+                <img src="nyan.png" height="80px"/>
+            </div>
         </div>
         <div class="container">
           {{> yield}}
