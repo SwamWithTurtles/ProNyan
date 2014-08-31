@@ -33,18 +33,20 @@ if (Meteor.isClient) {
 
   Template.chat.helpers({
     messages: function() {
-        return Messages.find({}, {sort: {time: -1}}).fetch();
+        return Messages.find({}, {sort: {time: 1}}).fetch();
     }
   });
 
     Template.chat.events({
-        'click input' : function () {
+        'submit #goForm' : function (e) {
             // template data, if any, is available in 'this'
             Messages.insert({
                 user: Meteor.user().username,
                 message: $("#message")[0].value,
                 time: new Date()
-            })
+            });
+            e.preventDefault();
+            $("#message")[0].value = "";
         }
     });
 
@@ -67,7 +69,7 @@ if (Meteor.isClient) {
             });
         },
 
-        "click #fill" : function(){
+        "change #fillables" : function(){
             var selectedPronouns = $.parseJSON($("select")[0].value);
             $("#pron-nom").val(selectedPronouns.they);
             $("#pron-obl").val(selectedPronouns.them);

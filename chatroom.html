@@ -4,7 +4,8 @@
     </head>
 
     <body>
-        <div class="alert alert-info">
+        <div class="alert alert-info nav">
+            Pronyan! 
             {{> loginButtons}} |
 
             <a href="{{pathFor 'chat'}}">Chat</a> |
@@ -17,17 +18,17 @@
 </template>
 
 <template name="chat">
-  <h1>ProNyan</h1>
-    <input id="message" class="pronoun" />
-
-    <input type="button" value="Click" />
-
-    <table class="table table-hover">
-        {{#each messages}}
-            {{> messageHolder}}
-        {{/each}}
-    </table>
-
+    <div class="chats">
+      <table class="table table-hover">
+          {{#each messages}}
+              {{> messageHolder}}
+          {{/each}}
+      </table>
+    </div>
+    <form id="goForm" autocomplete="off">
+      <input id="message" class="pronoun" placeholder="Message..." />
+      <input type="button" value="Click" />
+    </form>
 </template>
 
 <template name="messageHolder">
@@ -41,12 +42,12 @@
 
 <template name="config">
 
-    <select>
+    <select id="fillables">
+        <option value=''>Select a default</option>
         <option value='{"they": "he", "them": "him", "their": "his", "themselves": "himself", "theirs": "his"}'>Masculine (He/Him/His)</option>
         <option value='{"they": "she", "them": "her", "their": "her", "themselves": "herself", "theirs": "hers"}'>Feminine (She/Her/Her)</option>
         <option value='{"they": "they", "them": "them", "their": "their", "themselves": "themselves", "theirs": "theirs"}'>Gender-Neutral (They/Them/Their)</option>
     </select>
-    <input type="button" id="fill" value="Fill With Defaults">
 
     <table class="table">
         <thead>
@@ -103,5 +104,7 @@
 </template>
 
 <template name="login">
-   Please sign in or register to see the site.
+  <div class="loginMessage">
+    Please sign in or register to see the site.
+  </div>
 </template>
