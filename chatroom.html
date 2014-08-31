@@ -10,13 +10,15 @@
             <a href="{{pathFor 'chat'}}">Chat</a> |
             <a href="{{pathFor 'config'}}">User Settings</a>
         </div>
-      {{> yield}}
+        <div class="container">
+          {{> yield}}
+        </div>
     </body>
 </template>
 
 <template name="chat">
   <h1>ProNyan</h1>
-    <textarea id="message" class="pronoun">Hello World!</textarea>
+    <input id="message" class="pronoun" />
 
     <input type="button" value="Click" />
 

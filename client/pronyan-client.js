@@ -44,9 +44,11 @@ pronyan = (function() {
 		if (document.body.addEventListener) {
 		  document.body.addEventListener("keyup", handleKeyUp, false);
 			document.body.addEventListener("click", handleKeyUp, false);
+			document.body.addEventListener("blur", hidePronouns, false);
 		} else {
 		  document.body.attachEvent("onkeyup", handleKeyUp);
 			document.body.attachEvent("onclick", handleKeyUp);
+			document.body.attachEvent("onblur", hidePronouns);
 		}
 		if(old) {old();}
 	}
