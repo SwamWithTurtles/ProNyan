@@ -83,13 +83,14 @@ if (Meteor.isClient) {
             var poss = $("#pron-poss")[0].value;
             var refl = $("#pron-refl")[0].value;
 
-            var username = "brian";
-
             var url = "http://172.22.87.17:8080/setUserPreferences?userId=" + Meteor.user().username.toLowerCase() +
             "&they=" + nom + "&them=" + obl + "&their=" + det + "&themselves=" + refl + "&theirs=" + poss;
 
             $.get(url, {}, function() {
-                alert("success");
+
+                $(".success").show();
+                setTimeout(function() {$(".success").hide(1000);}, 1000)
+
             });
         },
 
