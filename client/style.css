@@ -15,8 +15,7 @@
 }
 
 #goForm {
-  position: absolute;
-  bottom: 70px;
+  margin-top: 20px;
 }
 
 #goForm input {
