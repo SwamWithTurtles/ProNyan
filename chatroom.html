@@ -50,6 +50,8 @@
         <option value='{"they": "they", "them": "them", "their": "their", "themselves": "themselves", "theirs": "theirs"}'>Gender-Neutral (They/Them/Their)</option>
     </select>
 
+    <input type="hidden" value="{{pronNom}}">
+
     <table class="table">
         <thead>
         <tr>
@@ -64,7 +66,7 @@
           <td>Nominative<br/>
               <i><b>They</b></i> went swimming.</td>
             <td>
-                <input id="pron-nom" type="text">
+                <input id="pron-nom" type="text" value="">
             </td>
         </tr>
         <tr>

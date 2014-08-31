@@ -54,6 +54,26 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.config.helpers({
+      pronNom: function() {
+        var username = (Meteor.user() || {username:false}).username;
+        if(username) {
+          var url = "http://172.22.87.17:8080/getUserPreferences?userId=" + username.toLowerCase();
+          console.log(url);
+          var x;
+          $.get(url, {}, function (data) {
+            $("#pron-nom")[0].value = data.pronouns.they;
+            $("#pron-obl")[0].value = data.pronouns.them;
+            $("#pron-det")[0].value = data.pronouns.their;
+            $("#pron-poss")[0].value = data.pronouns.theirs;
+            $("#pron-refl")[0].value = data.pronouns.themselves;
+          });
+
+        }
+        return "";
+      }
+    });
+
     Template.config.events({
         "click #change" : function () {
             // template data, if any, is available in 'this'
