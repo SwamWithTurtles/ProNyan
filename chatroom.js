@@ -6,13 +6,27 @@ if (Meteor.isClient) {
     passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
   });
 
-  Router.map(function() {
+    var authorisePageFor = function(pause) {
+        if (!Meteor.loggingIn() && !Meteor.user()) {
+
+            this.render('login');
+            pause();
+        }
+    }
+
+    Router.map(function() {
       this.route('chat', {
           path: '/',
-          layoutTemplate: 'layout'
+          layoutTemplate: 'layout',
+          onBeforeAction: authorisePageFor
       });
       this.route('config', {
           path: '/config',
+          layoutTemplate: 'layout',
+          onBeforeAction: authorisePageFor
+      });
+      this.route('login', {
+          path: '/login',
           layoutTemplate: 'layout'
       });
   });
