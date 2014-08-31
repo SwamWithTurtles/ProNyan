@@ -107,7 +107,7 @@ pronyan = (function() {
 							setTimeout(function() {
 								getPronouns(tag, resolver);
 							}, 5000);
-							genders.push(pronouns);
+							//genders.push(pronouns);
 						});
 					}
 				});
