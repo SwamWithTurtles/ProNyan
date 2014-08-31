@@ -43,3 +43,9 @@
 #fillables {
   float:right;
 }
+
+#message {
+  width: 500px;
+  left: 0px;
+  right:0px;
+}
