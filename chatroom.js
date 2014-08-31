@@ -33,6 +33,10 @@ if (Meteor.isClient) {
 
   Template.chat.helpers({
     messages: function() {
+        if(document.getElementById("chats")) {
+          document.getElementById("chats").scrollTop = 5000;
+          document.getElementById("chatbox").scrollTop = 5000;
+        }
         return Messages.find({}, {sort: {time: 1}}).fetch();
     }
   });
